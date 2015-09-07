@@ -38,7 +38,7 @@ public class BoardCreator : MonoBehaviour {
 			}
 		}
 	}
-
+	
 	private Tile Create ()
 	{
 		GameObject instance = Instantiate(tileViewPrefab) as GameObject;
@@ -56,6 +56,38 @@ public class BoardCreator : MonoBehaviour {
 		tiles.Add(p, t);
 		
 		return t;
+	}
+	
+	public void UpdateTiles()
+	{
+		for (int i = transform.childCount - 1; i >= 0; --i)
+		{
+			if(!transform.GetChild(i).gameObject.activeInHierarchy)
+			{
+				Tile tile = transform.GetChild(i).GetComponent<Tile>();
+
+				if(tile != null)
+				{
+					if(tiles.ContainsKey(tile.pos))
+					{
+						tiles.Remove(tile.pos);
+					}
+				}
+			}
+
+			if(transform.GetChild(i).gameObject.activeInHierarchy)
+			{
+				Tile tile = transform.GetChild(i).GetComponent<Tile>();
+				
+				if(tile != null)
+				{
+					if(!tiles.ContainsKey(tile.pos))
+					{
+						tiles.Add(tile.pos, tile);
+					}
+				}
+			}
+		}
 	}
 
 	public void Clear ()

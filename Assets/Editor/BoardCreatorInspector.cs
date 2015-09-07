@@ -21,9 +21,13 @@ public class BoardCreatorInspector : Editor
 			current.CreateBoard();
 		if (GUILayout.Button("Clear"))
 			current.Clear();
+		if (GUILayout.Button("Update"))
+			current.UpdateTiles();
 		if (GUILayout.Button("Save"))
 			current.Save();
 		if (GUILayout.Button("Load"))
 			current.Load();
+
+
 	}
 }
