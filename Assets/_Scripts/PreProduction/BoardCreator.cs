@@ -97,6 +97,7 @@ public class BoardCreator : MonoBehaviour {
 		tiles.Clear();
 	}
 
+#if UNITY_EDITOR
 	public void Save ()
 	{
 		string filePath = Application.dataPath + "/Resources/Levels";
@@ -122,6 +123,7 @@ public class BoardCreator : MonoBehaviour {
 			AssetDatabase.CreateFolder("Assets/Resources", "Levels");
 		AssetDatabase.Refresh();
 	}
+#endif
 
 	public void Load ()
 	{

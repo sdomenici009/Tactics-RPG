@@ -13,6 +13,7 @@ public class Board : MonoBehaviour
 		{
 			GameObject instance = Instantiate(tilePrefab) as GameObject;
 			Tile t = instance.GetComponent<Tile>();
+			t.transform.SetParent(transform);
 			t.Load(data.tiles[i]);
 			tiles.Add(t.pos, t);
 		}
